@@ -1,0 +1,30 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id Int @id @default(autoincrement())
+  name String
+  email String
+  password String
+  friend_01 User[] @relation("friend")
+  friend_02 User[] @relation("friend")
+  sendInvite Invite[] @relation("sender")
+  reciveInvite Invite[] @relation("reciver")
+}
+
+model Invite {
+  id Int @id @default(autoincrement())
+  sender User @relation("sender", fields: [senderId], references: [id])
+  senderId Int
+  reciver User @relation("reciver", fields: [reciverId], references: [id])
+  reciverId Int
+}

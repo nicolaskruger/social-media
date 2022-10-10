@@ -1,14 +1,19 @@
 import type {User} from '@dto/user';
 import express from 'express';
+import {errorMiddleware} from './middlewares/erroMiddleware';
+import {router} from './routes';
+import cors from 'cors';
 
 const app = express();
 
-app.get('/', (req, res) => {
-	const user: User = {
-		name: 'sergio',
-	};
+app.use(express.json());
 
-	return res.json(user);
-});
+// App.use(cors());
+
+app.get('/', (req, res) => res.json({message: 'ok'}));
+
+app.use(router);
+
+app.use(errorMiddleware);
 
 app.listen(3333);

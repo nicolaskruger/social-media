@@ -19,7 +19,10 @@
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@dto/*": ["./src/dto/*"]
+      "@dto/*": ["./src/dto/*"],
+      "@service/*": ["./src/service/*"],
+      "@routes/*": ["./src/routes/*"],
+      "@utils/*": ["./src/utils/*"]
     }                              
   }
 }

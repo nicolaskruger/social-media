@@ -1,7 +1,10 @@
 type User = {
-    name: string
-}
+	name: string;
+	password: string;
+	email: string;
+	id: string;
+};
 
-export {
-    User
-}
+export type {
+	User,
+};
