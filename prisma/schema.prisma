@@ -15,6 +15,7 @@ model User {
   name String
   email String
   password String
+  image String?
   friend_01 User[] @relation("friend")
   friend_02 User[] @relation("friend")
   sendInvite Invite[] @relation("sender")
