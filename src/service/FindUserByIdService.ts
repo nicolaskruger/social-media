@@ -15,6 +15,15 @@ export class FindUserByIdService {
 			id: Number(id),
 		}});
 
-        if(!user)
+		if (!user) {
+			return res.status(404)
+				.json({
+					message: `user with id: ${id} not found`,
+				});
+		}
+
+		return res.json({
+			...user,
+		});
 	}
 }
