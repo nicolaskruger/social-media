@@ -22,7 +22,8 @@
       "@dto/*": ["./src/dto/*"],
       "@service/*": ["./src/service/*"],
       "@routes/*": ["./src/routes/*"],
-      "@utils/*": ["./src/utils/*"]
+      "@utils/*": ["./src/utils/*"],
+      "@repository/*": ["./src/repository"]
     }                              
   }
 }

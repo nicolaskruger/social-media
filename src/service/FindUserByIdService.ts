@@ -1,19 +1,15 @@
 import type {PrismaClient} from '@prisma/client';
 import type {Request, Response} from 'express';
+import type {UserRepositoryInterface} from 'src/repository/UserRepositoryIntervface';
 
 export class FindUserByIdService {
-	private readonly prisma: PrismaClient;
-
-	constructor(prisma: PrismaClient) {
-		this.prisma = prisma;
+	constructor(private readonly userRepository: UserRepositoryInterface) {
 	}
 
 	async handle(req: Request, res: Response) {
 		const {id} = req.params;
 
-		const user = await this.prisma.user.findFirst({where: {
-			id: Number(id),
-		}});
+		const user = await this.userRepository.findUserById(Number(id));
 
 		if (!user) {
 			return res.status(404)
